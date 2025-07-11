@@ -1,0 +1,11 @@
+pandas
+ipykernel
+numpy
+pinecone
+dotenv
+transformers
+torch
+torchvision
+torchaudio
+sentence_transformers
+hf_xet
