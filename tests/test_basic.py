@@ -1,18 +1,19 @@
+# tests/test_basic.py
 import pytest
 import os
 import sys
 
-# Add src to path
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'src'))
+# Add project root to path
+project_root = os.path.dirname(os.path.dirname(__file__))
+sys.path.insert(0, project_root)
 
 def test_imports():
     """Test that core modules can be imported"""
     try:
-        from search_agent import SearchAgent
-        from recommendation_agent import RecommendationAgent
-        from gbr_system import GBRSystem
+        from src.search_agent import SearchAgent
+        from src.recommendation_agent import RecommendationAgent  
+        from src.gbr_system import GBRSystem
         assert True
-
     except ImportError as e:
         pytest.fail(f"Import failed: {e}")
 
