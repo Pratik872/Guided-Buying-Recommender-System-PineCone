@@ -17,7 +17,11 @@ if 'gbr_system' not in st.session_state:
     # Initialize components
     pc = Pinecone(api_key=os.getenv("PINECONE_API_KEY"))
     idx = pc.Index(index_name)
-    retriever = SentenceTransformer(embeddings_model)
+    try:
+        retriever = SentenceTransformer('all-mpnet-base-v2')
+    except Exception as e:
+        st.error(f"Model loading failed: {e}")
+        st.stop()
     ner_engine = pipeline("ner", 
                          model=ner_model,
                          aggregation_strategy="simple")
