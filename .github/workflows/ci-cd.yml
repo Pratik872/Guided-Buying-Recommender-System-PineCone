@@ -47,3 +47,19 @@ jobs:
         sleep 10
         curl -f http://localhost:8501/_stcore/health || exit 1
         docker stop test-container
+
+  # deploy:
+  #   needs: [test, build]
+  #   runs-on: ubuntu-latest
+    # if: github.ref == 'refs/heads/main'
+    
+  #   steps:
+  #   - uses: actions/checkout@v3
+    
+  #   - name: Install Railway CLI
+  #     run: npm install -g @railway/cli
+    
+  #   - name: Deploy to Railway
+  #     run: railway up --service ${{ secrets.RAILWAY_SERVICE_ID }}
+  #     env:
+  #       RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
