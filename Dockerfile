@@ -29,6 +29,7 @@ COPY .env* ./
 RUN mkdir -p logs temp && chmod 755 logs temp
 RUN mkdir -p /tmp/.cache && chmod 777 /tmp/.cache
 ENV SENTENCE_TRANSFORMERS_HOME=/tmp/.cache
+ENV TRANSFORMERS_CACHE=/tmp/.cache
 
 # Expose port for HuggingFaces
 EXPOSE 7860
