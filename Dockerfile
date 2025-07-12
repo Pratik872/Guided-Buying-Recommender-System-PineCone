@@ -16,7 +16,7 @@ RUN pip install --no-cache-dir --upgrade pip && \
     pip install --no-cache-dir -r requirements.txt
 
 # Pre-download models during build
-RUN python -c "from sentence_transformers import SentenceTransformer; SentenceTransformer('all-mpnet-base-v2')"
+RUN python -c "import sentence_transformers; sentence_transformers.SentenceTransformer('all-mpnet-base-v2', cache_folder='/tmp/.cache')"
 
 # Copy application files
 COPY src/ ./src/
