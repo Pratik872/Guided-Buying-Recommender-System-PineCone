@@ -24,8 +24,8 @@ COPY .env* ./
 # Create directories
 RUN mkdir -p logs temp
 
-# Expose port
-EXPOSE 8501
+# Expose port for HuggingFaces
+EXPOSE 7860
 
 # Health check
 HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
@@ -39,4 +39,4 @@ ENV STREAMLIT_SERVER_HEADLESS=true
 ENV STREAMLIT_BROWSER_GATHER_USAGE_STATS=false
 
 # Run application
-CMD ["streamlit", "run", "app.py", "--server.port=8501", "--server.address=0.0.0.0"]
+CMD ["streamlit", "run", "app.py", "--server.port=7860", "--server.address=0.0.0.0"]

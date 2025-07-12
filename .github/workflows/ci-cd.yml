@@ -48,18 +48,26 @@ jobs:
         curl -f http://localhost:8501/_stcore/health || exit 1
         docker stop test-container
 
-  # deploy:
-  #   needs: [test, build]
-  #   runs-on: ubuntu-latest
-    # if: github.ref == 'refs/heads/main'
+
+  deploy-hf:
+    needs: [test, build]
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
     
-  #   steps:
-  #   - uses: actions/checkout@v3
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
     
-  #   - name: Install Railway CLI
-  #     run: npm install -g @railway/cli
-    
-  #   - name: Deploy to Railway
-  #     run: railway up --service ${{ secrets.RAILWAY_SERVICE_ID }}
-  #     env:
-  #       RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+    - name: Deploy to Hugging Face Spaces
+      env:
+        HF_TOKEN: ${{ secrets.HF_TOKEN }}
+      run: |
+        git config --global user.email "action@github.com"
+        git config --global user.name "GitHub Action"
+        git clone https://$HF_TOKEN@huggingface.co/spaces/Pratik-1406/gbr-system hf-space
+        rsync -av --exclude='.git' --exclude='hf-space' . hf-space/
+        cd hf-space
+        git add .
+        git diff --staged --quiet || git commit -m "Deploy from GitHub: ${{ github.sha }}"
+        git push
