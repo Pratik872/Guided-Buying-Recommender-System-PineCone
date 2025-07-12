@@ -1,17 +1,7 @@
 from dataclasses import dataclass
 from src.logging.logger import logging
 import time
-
-@dataclass
-class SearchResult:
-    id: str
-    title: str
-    price: float
-    stars: float
-    reviews: int
-    isBestSeller: bool
-    boughtinLastMonth: int
-    productURL: str
+from config.constants import top_k
 
 
 class SearchAgent:
@@ -41,7 +31,7 @@ class SearchAgent:
         #Vector Search
         results = self.index.query(
             vector = emb_query,
-            top_k = 5,
+            top_k = top_k,
             include_metadata = True,
             filter = filters
         )
@@ -52,20 +42,20 @@ class SearchAgent:
 
         search_results = []
         for match in results['matches']:
-            result = SearchResult(
-                id = match['id'],
-                title=match['metadata']['title'],
-                price = float(match['metadata']['price']),
-                stars = float(match['metadata']['stars']),
-                reviews = int(match['metadata']['reviews']),
-                isBestSeller = match['metadata']['isBestSeller'],
-                boughtinLastMonth = int(match['metadata']['boughtInLastMonth']),
-                productURL = match['metadata']['productURL']
-            )
+            result = {
+                "id" : match['id'],
+                "title":match['metadata']['title'],
+                "price" : float(match['metadata']['price']),
+                "stars" : float(match['metadata']['stars']),
+                "reviews" : int(match['metadata']['reviews']),
+                "isBestSeller" : match['metadata']['isBestSeller'],
+                "boughtinLastMonth" : int(match['metadata']['boughtInLastMonth']),
+                "productURL" : match['metadata']['productURL']
+            }
 
             search_results.append(result)
-        
-        return search_results, search_latency
+
+        return search_results
 
     
     def _apply_business_rules(self, user_profile, entities):
