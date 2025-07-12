@@ -1,0 +1,17 @@
+{
+  "software_developer": {
+    "role": "software_developer",
+    "budget": 2500,
+    "categories": ["electronics", "computers"]
+  },
+  "hr_manager": {
+    "role": "hr_manager", 
+    "budget": 1500,
+    "categories": ["office", "electronics"]
+  },
+  "designer": {
+    "role": "designer",
+    "budget": 4000,
+    "categories": ["electronics", "computers"]
+  }
+}
