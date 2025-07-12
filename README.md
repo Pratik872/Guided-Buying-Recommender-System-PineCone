@@ -1,3 +1,13 @@
+---
+title: GBR System
+emoji: 🛒
+colorFrom: blue
+colorTo: green
+sdk: docker
+app_file: app.py
+pinned: false
+---
+
 # Guided Buying Recommender (GBR) System
 
 <b>AI-powered procurement recommendation system demonstrating vector search and multi-agent architecture for enterprise purchasing decisions.</b>
