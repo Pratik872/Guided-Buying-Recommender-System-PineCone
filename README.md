@@ -46,12 +46,12 @@ Next-generation procurement capabilities using:
 - <b>GBR Orchestrator</b>: Coordinates agent workflows and business logic
 
 ## Business Applications
-### SAP Ariba Context
+<!-- ### SAP Ariba Context
 - <b>Procurement Intelligence</b>: Automated buying suggestions
 - <b>Cost Optimization</b>: Bundle deals and budget compliance
 - <b>User Experience</b>: Natural language search interface
 - <b>Scalability</b>: Vector database handles millions of products
-- <b>Integration Ready</b>: API-first architecture for enterprise systems
+- <b>Integration Ready</b>: API-first architecture for enterprise systems -->
 
 ### Business Impact
 - <b>Faster Procurement</b>: 139ms search vs traditional catalog browsing
@@ -59,12 +59,12 @@ Next-generation procurement capabilities using:
 - <b>Compliance</b>: Built-in budget and policy enforcement
 - <b>User Adoption</b>: Intuitive chat-like interface
 
-## SAP Ariba Alignment
+<!-- ## SAP Ariba Alignment
 - <b>Vector Search</b>: Next-generation catalog search using semantic understanding
 - <b>AI Recommendations</b>: Intelligent buying suggestions based on user context
 - <b>Business Logic</b>: Enterprise-grade policy enforcement and budget controls
 - <b>Multi-Agent Architecture</b>: Scalable, maintainable AI system design
-- <b>Performance</b>: Production-ready latency for enterprise deployment
+- <b>Performance</b>: Production-ready latency for enterprise deployment -->
 
 ## Tech Stack
 - Database: Pinecone Serverless (AWS us-east-1)
