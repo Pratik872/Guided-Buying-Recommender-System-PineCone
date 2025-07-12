@@ -17,6 +17,7 @@ RUN pip install --no-cache-dir --upgrade pip && \
 
 # Pre-download models during build
 RUN python -c "import sentence_transformers; sentence_transformers.SentenceTransformer('all-mpnet-base-v2', cache_folder='/tmp/.cache')"
+RUN python -c "from transformers import pipeline; pipeline('ner', model='Babelscape/wikineural-multilingual-ner', cache_dir='/tmp/.cache')"
 
 # Copy application files
 COPY src/ ./src/
