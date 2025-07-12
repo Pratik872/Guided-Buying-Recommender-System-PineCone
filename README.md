@@ -2,7 +2,7 @@
 
 <b>AI-powered procurement recommendation system demonstrating vector search and multi-agent architecture for enterprise purchasing decisions.</b>
 
-![enterprise-grade-search]()
+![enterprise-grade-search](https://github.com/Pratik872/Guided-Buying-System-PineCone/blob/main/readme_resources/grade-search.png)
 
 ## Demo Results
 ### Search Performance
@@ -29,7 +29,7 @@
 - <b>Alternative Discovery</b>: Similar product recommendations
 
 ## MODULAR Project Structure
-![structure](https://github.com/Pratik872/NER_based_Semantic_Search/blob/main/readme%20resources/results.png)
+![structure](https://github.com/Pratik872/Guided-Buying-System-PineCone/blob/main/readme_resources/structure.png)
 
 ## Project Overview
 Next-generation procurement capabilities using:
