@@ -1,7 +1,7 @@
 import streamlit as st
 import json
 import time
-from src.search_agent import SearchAgent
+from src.gbr_system import GBRSystem
 from sentence_transformers import SentenceTransformer
 from transformers import pipeline
 from pinecone import Pinecone
@@ -13,7 +13,7 @@ from config.constants import *
 load_dotenv()
 
 # Initialize session state
-if 'search_agent' not in st.session_state:
+if 'gbr_system' not in st.session_state:
     # Initialize components
     pc = Pinecone(api_key=os.getenv("PINECONE_API_KEY"))
     idx = pc.Index(index_name)
@@ -22,7 +22,7 @@ if 'search_agent' not in st.session_state:
                          model=ner_model,
                          aggregation_strategy="simple")
     
-    st.session_state.search_agent = SearchAgent(idx, retriever, ner_engine)
+    st.session_state.gbr_system = GBRSystem(idx, retriever, ner_engine)
 
 # Load user profiles
 @st.cache_data
@@ -57,31 +57,32 @@ with col1:
 with col2:
     st.markdown("<br>", unsafe_allow_html=True)
     search_button = st.button("🔍 Search Products", type="primary", use_container_width=True)
-
+    
 # Search execution
 if search_button and query:
-    with st.spinner("Searching products..."):
+    with st.spinner("Searching products and generating recommendations..."):
         start_time = time.time()
         
-        # Execute search
-        results = st.session_state.search_agent.search(
+        # Execute complete GBR workflow
+        results = st.session_state.gbr_system.process_query(
             query=query, 
             user_profile=profiles[selected_profile]
         )
         
-        search_time = (time.time() - start_time) * 1000
+        search_time = (time.time() - start_time)
     
-    # Display results with enhanced styling
-    if results:
+    # Display search results
+    search_results = results['search_results']
+    if search_results:
         col1, col2 = st.columns([2, 1])
         with col1:
-            st.success(f"✅ Found {len(results)} products")
+            st.success(f"✅ Found {len(search_results)} products")
         with col2:
-            st.info(f"⚡ Search time: {search_time:.1f}ms")
+            st.info(f"⚡ Search time: {search_time:.1f}s")
         
         st.header("📦 Search Results")
         
-        for i, product in enumerate(results):
+        for i, product in enumerate(search_results):
             # Product card with border
             with st.container(border=True):
                 # Header row
@@ -125,6 +126,49 @@ if search_button and query:
                             st.caption(f"💸 Exceeds by ${over_budget:,.2f}")
                     else:
                         st.info("💰 Price TBD")
+        
+        # Display bundle recommendations
+        bundles = results['bundles']
+        if bundles:
+            st.header("📦 Bundle Recommendations")
+            st.markdown("*Complete your purchase with these complementary products*")
+            
+            for i, bundle in enumerate(bundles):
+                with st.container(border=True):
+                    col1, col2 = st.columns([3, 1])
+                    
+                    with col1:
+                        st.subheader(f"Bundle {i+1}: {bundle['main_product']['title'][:50]}...")
+                        
+                        # Show accessories
+                        st.markdown("**Included accessories:**")
+                        for acc in bundle['accessories']:
+                            st.markdown(f"• {acc['title'][:60]}... - ${acc['price']:.2f}")
+                    
+                    with col2:
+                        st.metric("💰 Bundle Price", f"${bundle['total_price']:,.2f}")
+                        st.metric("💸 You Save", f"${bundle['savings']:.2f}")
+                        
+                        if bundle['total_price'] <= profiles[selected_profile]['budget']:
+                            st.success("✅ Within Budget")
+                        else:
+                            st.error("❌ Over Budget")
+        
+        # Display alternatives
+        alternatives = results['alternatives']
+        if alternatives:
+            st.header("🔄 Alternative Options")
+            st.markdown("*Similar products you might consider*")
+            
+            col1, col2, col3 = st.columns(3)
+            for i, alt in enumerate(alternatives):
+                with [col1, col2, col3][i % 3]:
+                    with st.container(border=True):
+                        st.markdown(f"**{alt['title'][:40]}...**")
+                        st.metric("Price", f"${alt['price']:,.2f}")
+                        st.metric("Match", f"{alt['score']:.2f}")
+                        st.link_button("View", alt['productURL'], use_container_width=True)
+    
     else:
         st.warning("⚠️ No products found. Try adjusting your search query or profile settings.")
 
