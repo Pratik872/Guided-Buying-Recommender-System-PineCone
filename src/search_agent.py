@@ -1,5 +1,4 @@
 from dataclasses import dataclass
-from src.logging.logger import logging
 import time
 from config.constants import top_k
 
@@ -15,15 +14,12 @@ class SearchAgent:
         """Execute search with business logic"""
         #Generate Embedding for Query
         emb_query = self.retriever.encode(query).tolist()
-        logging.info(f"Query embedded")
 
         #Extract entities
         entities = self._extract_entities(query)
-        logging.info(f"Entities extracted from query")
 
         #Apply business logic filters
         filters = self._apply_business_rules(user_profile, entities)
-        logging.info(f"Received filters: {filters}")
         
         #Measure search latency
         start_time = time.time()
@@ -38,7 +34,6 @@ class SearchAgent:
 
         end_time = time.time()
         search_latency = (end_time - start_time) * 1000  # Convert to milliseconds
-        logging.info(f"Search Latency is {search_latency}")
 
         search_results = []
         for match in results['matches']:

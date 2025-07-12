@@ -1,7 +1,6 @@
 from typing import List, Dict, Any
 from src.search_agent import SearchAgent
 from src.recommendation_agent import RecommendationAgent
-from src.logging.logger import logging
 
 class GBRSystem:
     
@@ -16,11 +15,9 @@ class GBRSystem:
 
         #Step 1: Search for products
         search_results = self.search_agent.search(query, user_profile)
-        logging.info(f"GBRSystem > process_query: Searching products finished")
 
         #Step2: Generate Recommendations
         bundles = self.recommendation_agent.recommend_bundles(search_results, user_profile)
-        logging.info(f"GBRSystem > process_query: Recommendations achieved")
 
         #Step3: Find Alternatives for top product
         alternatives = []
