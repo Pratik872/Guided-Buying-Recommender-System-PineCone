@@ -28,6 +28,12 @@
 - <b>Bundle Intelligence</b>: Automatic accessory suggestions with savings calculation
 - <b>Alternative Discovery</b>: Similar product recommendations
 
+### MLOPs & Production
+- <b>Container Startup</b>: ~15 seconds including model loading
+- <b>CI/CD Runtime</b>: ~2 minutes for full test and build cycle
+- <b>Health Monitoring</b>: Automated status validation
+- <b>Production Ready</b>: Dockerized with automated testing
+
 ## MODULAR Project Structure
 ![structure](https://github.com/Pratik872/Guided-Buying-System-PineCone/blob/main/readme_resources/structure.png)
 
@@ -45,6 +51,12 @@ Next-generation procurement capabilities using:
 - <b>Recommendation Agent</b>: Bundle generation and alternative product suggestions
 - <b>GBR Orchestrator</b>: Coordinates agent workflows and business logic
 
+### Production Infrastructure
+- <b>Docker Containerization</b>: Single-stage build with Python 3.12
+- <b>Automated Testing</b>: Pytest integration with module validation
+- <b>CI/CD Workflow</b>: GitHub Actions for continuous integration
+- <b>Health Monitoring</b>: Streamlit health endpoint checks
+
 ## Business Applications
 <!-- ### SAP Ariba Context
 - <b>Procurement Intelligence</b>: Automated buying suggestions
@@ -58,6 +70,7 @@ Next-generation procurement capabilities using:
 - <b>Cost Savings</b>: Automated bundle recommendations
 - <b>Compliance</b>: Built-in budget and policy enforcement
 - <b>User Adoption</b>: Intuitive chat-like interface
+- <b>Production Ready</b>: Containerized deployment with automated testing
 
 <!-- ## SAP Ariba Alignment
 - <b>Vector Search</b>: Next-generation catalog search using semantic understanding
@@ -67,14 +80,16 @@ Next-generation procurement capabilities using:
 - <b>Performance</b>: Production-ready latency for enterprise deployment -->
 
 ## Tech Stack
-<!-- - Dataset: Amazon Products Dataset -->
+- Dataset: Amazon Products Dataset
 - Database: Pinecone Serverless (AWS us-east-1)
 - Embedding Model: all-mpnet-base-v2 (768 dimensions)
 - NER Model: Babelscape/wikineural-multilingual-ner
 - Framework: Streamlit 1.29+
-- Python: 3.8+
+- Python: 3.12
 - Response Time: <200ms average
 - Scalability: 1M+ products supported
+- Container: Docker with health checks
+- CI/CD: GitHub Actions with automated testing
 
 
 ## Key Components
@@ -93,3 +108,5 @@ Next-generation procurement capabilities using:
 - Latency: ~0.8 seconds average search time
 - Dataset: 10k indexed articles
 - Precision: Entity filtering improves relevance
+- Container Performance: Optimized startup and runtime
+- Automation: Full CI/CD pipeline operational
