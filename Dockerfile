@@ -22,7 +22,7 @@ COPY app.py .
 COPY .env* ./
 
 # Create directories
-RUN mkdir -p logs temp
+RUN mkdir -p logs temp && chmod 755 logs temp
 
 # Expose port for HuggingFaces
 EXPOSE 7860
