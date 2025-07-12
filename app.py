@@ -23,7 +23,7 @@ if 'gbr_system' not in st.session_state:
         st.error(f"Model loading failed: {e}")
         st.stop()
     ner_engine = pipeline("ner", 
-                         model=ner_model,
+                         model="Babelscape/wikineural-multilingual-ner",
                          aggregation_strategy="simple")
     
     st.session_state.gbr_system = GBRSystem(idx, retriever, ner_engine)
