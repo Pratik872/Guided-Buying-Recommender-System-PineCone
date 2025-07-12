@@ -65,7 +65,7 @@ jobs:
       run: |
         git config --global user.email "action@github.com"
         git config --global user.name "GitHub Action"
-        git clone https://oauth2:$HF_TOKEN@huggingface.co/spaces/Pratik-1406/gbr-system-new hf-space
+        git clone https://oauth2:$HF_TOKEN@huggingface.co/spaces/Pratik-1406/gbr-system hf-space
         rsync -av --exclude='.git' --exclude='hf-space' . hf-space/
         cd hf-space
         git add .
