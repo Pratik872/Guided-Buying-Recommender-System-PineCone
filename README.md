@@ -67,6 +67,7 @@ Next-generation procurement capabilities using:
 - <b>Performance</b>: Production-ready latency for enterprise deployment -->
 
 ## Tech Stack
+<!-- - Dataset: Amazon Products Dataset -->
 - Database: Pinecone Serverless (AWS us-east-1)
 - Embedding Model: all-mpnet-base-v2 (768 dimensions)
 - NER Model: Babelscape/wikineural-multilingual-ner
