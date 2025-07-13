@@ -22,11 +22,20 @@ if 'gbr_system' not in st.session_state:
     except Exception as e:
         st.error(f"Model loading failed: {e}")
         st.stop()
+
+    import requests
+
+    def get_ner_results(text):
+        API_URL = "https://api-inference.huggingface.co/models/Babelscape/wikineural-multilingual-ner"
+        headers = {"Authorization": f"Bearer {os.getenv('HF_TOKEN')}"}
+        response = requests.post(API_URL, headers=headers, json={"inputs": text})
+        return response.json()
+    
     ner_engine = pipeline("ner", 
                          model="Babelscape/wikineural-multilingual-ner",
                          aggregation_strategy="simple")
     
-    st.session_state.gbr_system = GBRSystem(idx, retriever, ner_engine)
+    st.session_state.gbr_system = GBRSystem(idx, retriever, get_ner_results)
 
 # Load user profiles
 @st.cache_data

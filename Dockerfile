@@ -17,7 +17,7 @@ RUN pip install --no-cache-dir --upgrade pip && \
 
 # Pre-download models during build
 RUN python -c "import sentence_transformers; sentence_transformers.SentenceTransformer('all-mpnet-base-v2', cache_folder='/tmp/.cache')"
-RUN python -c "from transformers import pipeline; pipeline('ner', model='Babelscape/wikineural-multilingual-ner')"
+# RUN python -c "from transformers import pipeline; pipeline('ner', model='Babelscape/wikineural-multilingual-ner')"
 
 # Copy application files
 COPY src/ ./src/
@@ -29,8 +29,7 @@ COPY .env* ./
 RUN mkdir -p logs temp && chmod 755 logs temp
 RUN mkdir -p /tmp/.cache && chmod 777 /tmp/.cache
 ENV SENTENCE_TRANSFORMERS_HOME=/tmp/.cache
-ENV TRANSFORMERS_CACHE=/tmp/.cache
-RUN rm -rf /tmp/.cache/huggingface/transformers/*/locks/
+
 
 # Expose port for HuggingFaces
 EXPOSE 7860
