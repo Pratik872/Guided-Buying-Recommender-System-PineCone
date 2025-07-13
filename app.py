@@ -28,14 +28,14 @@ def load_ner_pipeline():
                    model="Babelscape/wikineural-multilingual-ner",
                    aggregation_strategy="simple")
 
+if __name__ =='__main__':
+    idx = load_pinecone_index()
+    retriever = load_model()
+    ner_engine = load_ner_pipeline()
+    print("Models ready")
+
 # Initialize session state
 if 'gbr_system' not in st.session_state:
-    # Initialize components
-    idx = load_pinecone_index()
-
-    retriever = load_model()
-    
-    ner_engine = load_ner_pipeline()
     
     st.session_state.gbr_system = GBRSystem(idx, retriever, ner_engine)
 
