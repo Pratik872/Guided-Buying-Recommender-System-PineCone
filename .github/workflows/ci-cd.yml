@@ -66,7 +66,7 @@ jobs:
         RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
       run: |
         railway login --token $RAILWAY_TOKEN
-        railway deploy --service gbr-system
+        railway deploy
     
     - name: Verify deployment
       run: |
