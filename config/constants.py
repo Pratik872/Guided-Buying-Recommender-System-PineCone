@@ -1,8 +1,3 @@
-
-
-#User Profile
-user = "software_developer"
-
 #Top_K
 top_k = 5
 

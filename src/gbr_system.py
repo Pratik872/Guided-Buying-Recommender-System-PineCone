@@ -12,7 +12,7 @@ class GBRSystem:
 
     def process_query(self, query: str, user_profile: dict) -> dict:
         """Complete GBR workflow: search + recommendations"""
-
+        
         #Step 1: Search for products
         search_results = self.search_agent.search(query, user_profile)
 

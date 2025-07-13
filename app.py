@@ -11,31 +11,24 @@ from config.constants import *
 
 # Load environment variables
 load_dotenv()
+pc_key = os.getenv('PINECONE_API_KEY')
 
 # Initialize session state
 if 'gbr_system' not in st.session_state:
     # Initialize components
-    pc = Pinecone(api_key=os.getenv("PINECONE_API_KEY"))
+    pc = Pinecone(api_key=pc_key)
     idx = pc.Index(index_name)
     try:
         retriever = SentenceTransformer('all-mpnet-base-v2')
     except Exception as e:
         st.error(f"Model loading failed: {e}")
         st.stop()
-
-    import requests
-
-    def get_ner_results(text):
-        API_URL = "https://api-inference.huggingface.co/models/Babelscape/wikineural-multilingual-ner"
-        headers = {"Authorization": f"Bearer {os.getenv('HF_TOKEN')}"}
-        response = requests.post(API_URL, headers=headers, json={"inputs": text})
-        return response.json()
     
-    # ner_engine = pipeline("ner", 
-    #                      model="Babelscape/wikineural-multilingual-ner",
-    #                      aggregation_strategy="simple")
+    ner_engine = pipeline("ner", 
+                         model="Babelscape/wikineural-multilingual-ner",
+                         aggregation_strategy="simple")
     
-    st.session_state.gbr_system = GBRSystem(idx, retriever, get_ner_results)
+    st.session_state.gbr_system = GBRSystem(idx, retriever, ner_engine)
 
 # Load user profiles
 @st.cache_data

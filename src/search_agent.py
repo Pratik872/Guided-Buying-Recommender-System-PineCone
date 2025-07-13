@@ -14,9 +14,11 @@ class SearchAgent:
         """Execute search with business logic"""
         #Generate Embedding for Query
         emb_query = self.retriever.encode(query).tolist()
+        
 
         #Extract entities
         entities = self._extract_entities(query)
+        
 
         #Apply business logic filters
         filters = self._apply_business_rules(user_profile, entities)
@@ -49,6 +51,7 @@ class SearchAgent:
             }
 
             search_results.append(result)
+        print(search_results)
 
         return search_results
 
