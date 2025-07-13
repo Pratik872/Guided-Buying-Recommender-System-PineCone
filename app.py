@@ -13,16 +13,17 @@ from config.constants import *
 load_dotenv()
 pc_key = os.getenv('PINECONE_API_KEY')
 
+@st.cache_resource
+def load_model():
+    return SentenceTransformer('all-mpnet-base-v2')
+
 # Initialize session state
 if 'gbr_system' not in st.session_state:
     # Initialize components
     pc = Pinecone(api_key=pc_key)
     idx = pc.Index(index_name)
-    try:
-        retriever = SentenceTransformer('all-mpnet-base-v2')
-    except Exception as e:
-        st.error(f"Model loading failed: {e}")
-        st.stop()
+
+    retriever = load_model()
     
     ner_engine = pipeline("ner", 
                          model="Babelscape/wikineural-multilingual-ner",
