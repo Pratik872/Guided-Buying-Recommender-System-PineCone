@@ -14,20 +14,28 @@ load_dotenv()
 pc_key = os.getenv('PINECONE_API_KEY')
 
 @st.cache_resource
+def load_pinecone_index():
+    pc = Pinecone(api_key=pc_key)
+    return pc.Index(index_name)
+
+@st.cache_resource
 def load_model():
     return SentenceTransformer('all-mpnet-base-v2')
+
+@st.cache_resource
+def load_ner_pipeline():
+    return pipeline("ner", 
+                   model="Babelscape/wikineural-multilingual-ner",
+                   aggregation_strategy="simple")
 
 # Initialize session state
 if 'gbr_system' not in st.session_state:
     # Initialize components
-    pc = Pinecone(api_key=pc_key)
-    idx = pc.Index(index_name)
+    idx = load_pinecone_index()
 
     retriever = load_model()
     
-    ner_engine = pipeline("ner", 
-                         model="Babelscape/wikineural-multilingual-ner",
-                         aggregation_strategy="simple")
+    ner_engine = load_ner_pipeline()
     
     st.session_state.gbr_system = GBRSystem(idx, retriever, ner_engine)
 
