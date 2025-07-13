@@ -31,9 +31,9 @@ if 'gbr_system' not in st.session_state:
         response = requests.post(API_URL, headers=headers, json={"inputs": text})
         return response.json()
     
-    ner_engine = pipeline("ner", 
-                         model="Babelscape/wikineural-multilingual-ner",
-                         aggregation_strategy="simple")
+    # ner_engine = pipeline("ner", 
+    #                      model="Babelscape/wikineural-multilingual-ner",
+    #                      aggregation_strategy="simple")
     
     st.session_state.gbr_system = GBRSystem(idx, retriever, get_ner_results)
 
