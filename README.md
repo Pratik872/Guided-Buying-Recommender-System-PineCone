@@ -19,6 +19,10 @@ pinned: false
 
 ![Worflow](https://github.com/Pratik872/Guided-Buying-Recommender-System-PineCone/blob/main/readme_resources/workflow_diagram.svg)
 
+## MODULAR Project Structure
+![structure](https://github.com/Pratik872/Guided-Buying-System-PineCone/blob/main/readme_resources/structure.png)
+
+
 ## Recommendation Quality
 - <b>Bundle Recommendations</b>: 3 intelligent bundles per search
 - <b>Alternative Products</b>: Similar items within budget
@@ -44,9 +48,6 @@ pinned: false
 - <b>Health Monitoring</b>: Automated status validation
 - <b>Production Ready</b>: Dockerized with automated testing
 - <b>Production URL</b>: Live accessible endpoint with health checks
-
-## MODULAR Project Structure
-![structure](https://github.com/Pratik872/Guided-Buying-System-PineCone/blob/main/readme_resources/structure.png)
 
 
 ## Production Infrastructure
@@ -78,24 +79,9 @@ pinned: false
 - NER Model: Babelscape/wikineural-multilingual-ner
 - Framework: Streamlit 1.29+
 - Python: 3.12
-- Response Time: <200ms average
-- Scalability: 1M+ products supported
 - Container: Docker with health checks
 - CI/CD: GitHub Actions with automated testing
 - Deployment: Railway cloud platform with continuous deployment
-- Infrastructure: 8GB RAM, CPU-only PyTorch optimization
-
-
-## Key Components
-### NER Engine (ner_engine.py)
-- BERT-based token classification
-- Aggregation strategy for entity extraction
-- CPU/GPU device management
-
-### Retriever (retriever.py)
-- Sentence transformer encoding
-- Batch processing support
-- Query embedding generation
 
 ## Challenges Faced and Solutions
 ### Docker Image Optimization
