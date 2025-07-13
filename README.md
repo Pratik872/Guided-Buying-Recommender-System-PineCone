@@ -8,37 +8,37 @@ app_file: app.py
 pinned: false
 ---
 
-# Guided Buying Recommender (GBR) System
+# Guided Buying Recommender (GBR) System from Scratch to Production
 
 <b>AI-powered procurement recommendation system demonstrating vector search and multi-agent architecture for enterprise purchasing decisions.</b>
+- Semantic Search
+- Named Entity Recognition powered search
+- Personalized Recommendations
+- Business Logic/ (Rules for employee levels)
+- Contextual Buying Suggestions.
 
-![enterprise-grade-search](https://github.com/Pratik872/Guided-Buying-System-PineCone/blob/main/readme_resources/grade-search.png)
+![Worflow](https://github.com/Pratik872/Guided-Buying-Recommender-System-PineCone/blob/main/readme_resources/workflow_diagram.svg)
 
-## Demo Results
-### Search Performance
-- <b>50,000 products</b> indexed and searchable
-- <b>Sub-200ms</b> query response time
-- <b>Semantic Similarity</b> scoring
-
-### Recommendation Quality
+## Recommendation Quality
 - <b>Bundle Recommendations</b>: 3 intelligent bundles per search
 - <b>Alternative Products</b>: Similar items within budget
 - <b>Cost Optimization</b>: Average 5% bundle savings
 - <b>Business Compliance</b>: 100% budget adherence
 
-## Performance Metrics
-### Search Latency
-- <b>Average Query Time</b>: 139ms (vector search + NER + filtering)
-- <b>Index Size</b>: 50K products with metadata
-- <b>Embedding Generation</b>: less 50ms per query
-- <b>Business Logic Processing</b>: less than 10ms
-
-### Business Capabilities
+## Business Capabilities
 - <b>Budget Optimization</b>: Role-based filtering and recommendations
 - <b>Bundle Intelligence</b>: Automatic accessory suggestions with savings calculation
 - <b>Alternative Discovery</b>: Similar product recommendations
 
-### MLOPs & Production
+## Business Impact
+- <b>Faster Procurement</b>: 139ms search vs traditional catalog browsing
+- <b>Cost Savings</b>: Automated bundle recommendations
+- <b>Compliance</b>: Built-in budget and policy enforcement
+- <b>User Adoption</b>: Intuitive chat-like interface
+- <b>Production Ready</b>: Containerized deployment with automated testing
+- <b>Scalability</b>: Cloud deployment supporting enterprise workloads
+
+## MLOPs & Production
 - <b>Container Startup</b>: ~15 seconds including model loading
 - <b>CI/CD Runtime</b>: ~2 minutes for full test and build cycle
 - <b>Health Monitoring</b>: Automated status validation
@@ -48,27 +48,14 @@ pinned: false
 ## MODULAR Project Structure
 ![structure](https://github.com/Pratik872/Guided-Buying-System-PineCone/blob/main/readme_resources/structure.png)
 
-## Project Overview
-Next-generation procurement capabilities using:
-- Semantic Search
-- Named Entity Recognition powered search
-- Personalized Recommendations
-- Business Logic/ (Rules for employee levels)
-- Contextual Buying Suggestions.
 
-## Architecture
-### Multi-Agent System
-- <b>Search Agent</b>: Vector-based product discovery with NER entity extraction
-- <b>Recommendation Agent</b>: Bundle generation and alternative product suggestions
-- <b>GBR Orchestrator</b>: Coordinates agent workflows and business logic
-
-### Production Infrastructure
+## Production Infrastructure
 - <b>Docker Containerization</b>: Optimized single-stage build reducing image from 10GB to 3GB
 - <b>Automated Testing</b>: Pytest integration with module validation
 - <b>Continuous Deployment</b>: Automated Railway deployment on main branch pushes
 - <b>Health Monitoring</b>: Streamlit health endpoint checks with Railway integration
 
-## Business Applications
+<!-- ## Business Applications -->
 <!-- ### SAP Ariba Context
 - <b>Procurement Intelligence</b>: Automated buying suggestions
 - <b>Cost Optimization</b>: Bundle deals and budget compliance
@@ -76,15 +63,8 @@ Next-generation procurement capabilities using:
 - <b>Scalability</b>: Vector database handles millions of products
 - <b>Integration Ready</b>: API-first architecture for enterprise systems -->
 
-### Business Impact
-- <b>Faster Procurement</b>: 139ms search vs traditional catalog browsing
-- <b>Cost Savings</b>: Automated bundle recommendations
-- <b>Compliance</b>: Built-in budget and policy enforcement
-- <b>User Adoption</b>: Intuitive chat-like interface
-- <b>Production Ready</b>: Containerized deployment with automated testing
-- <b>Scalability</b>: Cloud deployment supporting enterprise workloads
 
-<!-- ## SAP Ariba Alignment
+<!-- ### SAP Ariba Alignment
 - <b>Vector Search</b>: Next-generation catalog search using semantic understanding
 - <b>AI Recommendations</b>: Intelligent buying suggestions based on user context
 - <b>Business Logic</b>: Enterprise-grade policy enforcement and budget controls
@@ -116,14 +96,6 @@ Next-generation procurement capabilities using:
 - Sentence transformer encoding
 - Batch processing support
 - Query embedding generation
-
-
-## Performance
-- Latency: ~0.8 seconds average search time
-- Dataset: 10k indexed articles
-- Precision: Entity filtering improves relevance
-- Container Performance: Optimized startup and runtime
-- Automation: Full CI/CD pipeline operational
 
 ## Challenges Faced and Solutions
 ### Docker Image Optimization
