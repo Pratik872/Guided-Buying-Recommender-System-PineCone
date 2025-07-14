@@ -22,6 +22,14 @@ pinned: false
 ## MODULAR Project Structure
 ![structure](https://github.com/Pratik872/Guided-Buying-System-PineCone/blob/main/readme_resources/structure.png)
 
+## Scalability
+- Data Sources: Data Lake for historical data and training, Apache Kafka stream for real-time data and inference
+- <b>100M+ products vs current 50K</b>: Pinecone Enterprise Performance Tier, Graph Databases
+- <b>100,000+ concurrent users</b>: Horizontal scaling, Multi-region deployment, Load balancing at multiple levels (global → regional → application)
+- <b>Model Real-time Inference Optimization</b>: Model Quantization, Model Pruning, Knowledge Diastillation, Model Caching
+- <b>Multi-agent orchestration</b>: LangChain / AutoGen orchestration
+- <b>Azure Cloud Platform</b>: Database Services, Machine Learning and Container Platform
+
 
 ## Recommendation Quality
 - <b>Bundle Recommendations</b>: 3 intelligent bundles per search
