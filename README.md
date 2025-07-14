@@ -1,4 +1,4 @@
-# Guided Buying Recommender (GBR) System from Concept to Production
+# Guided Buying Recommender (GBR) System from Concept to Production with CI-CD
 
 <b>AI-powered procurement recommendation system demonstrating vector search and multi-agent architecture for enterprise purchasing decisions.</b>
 - Semantic Search
